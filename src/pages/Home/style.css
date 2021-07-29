@@ -1,0 +1,56 @@
+.home-main-col {
+  min-width: auto;
+  height: auto;
+  margin-left: 200px;
+  margin-right: 170px;
+  margin-top: 50px;
+}
+.orange-box {
+  width: 300px;
+  height: 300px;
+  box-shadow: 3px 3px rgb(204 202 202 /0.4);
+  margin-right: 20px;
+  background-color: orange;
+  float: left;
+  text-align: center;
+  color: white;
+}
+
+.yellow-box {
+  text-align: center;
+  color: white;
+  width: 300px;
+  height: 300px;
+  box-shadow: 3px 3px rgb(204 202 202 /0.4);
+  margin-right: 20px;
+  background-color: rgb(231, 233, 104);
+  float: left;
+}
+.blue-box {
+  text-align: center;
+  color: white;
+  width: 300px;
+  height: 300px;
+  box-shadow: 3px 3px rgb(204 202 202 /0.4);
+  margin-right: 20px;
+  background-color: rgb(0, 195, 255);
+  float: left;
+}
+
+.blue-box :hover{
+    font-size: 20px;
+    transition: 0.4s;
+    cursor: pointer;
+}
+
+.orange-box :hover{
+    font-size: 20px;
+    transition: 0.4s;
+    cursor: pointer;
+}
+
+.yellow-box :hover{
+    font-size: 20px;
+    transition: 0.4s;
+    cursor: pointer;
+}

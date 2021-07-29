@@ -12,7 +12,7 @@ import PersonelLinks from "../constants/personalLinks";
 function Footer() {
   return (
     <div className="footer">
-        <h5>Hey there! I am coding this site with React! </h5>
+       {/* <h5>Hey there! I am coding this site with React! </h5>*/}
         
         <a href={PersonelLinks.github} >
           <AiFillGithub />
