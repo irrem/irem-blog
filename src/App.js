@@ -6,6 +6,7 @@ import About from "./pages/About";
 import Home from "./pages/Home";
 import Portfolio from "./pages/Portfolio";
 import Footer from "./components/Footer";
+import newItem from "./pages/Portfolio/newItem";
 
 function App() {
   return (
@@ -13,8 +14,8 @@ function App() {
       <Router>
         <Header />
         <Switch>
-          <Route path="/about">
-            <About />
+          <Route path="/newItem">
+            <newItem />
           </Route>
           <Route path="/portfolio">
             <Portfolio />
@@ -23,7 +24,7 @@ function App() {
             <About />
           </Route>
           <Route path="/">
-            <Home/>
+            <Home />
           </Route>
         </Switch>
         <Footer />

@@ -14,16 +14,16 @@ function Footer() {
     <div className="footer">
        {/* <h5>Hey there! I am coding this site with React! </h5>*/}
         
-        <a href={PersonelLinks.github} >
+        <a href={PersonelLinks.github} target="_blank" rel="noreferrer noopener" >
           <AiFillGithub />
         </a>
-        <a href={PersonelLinks.linkedin}>
+        <a href={PersonelLinks.linkedin} target="_blank" rel="noreferrer noopener">
           <AiFillLinkedin />
         </a>
-        <a href={PersonelLinks.instagram}>
+        <a href={PersonelLinks.instagram} target="_blank" rel="noreferrer noopener">
           <AiOutlineInstagram />
         </a>
-        <a href={"mailto:" + PersonelLinks.mail}>
+        <a href={"mailto:" + PersonelLinks.mail} target="_blank" rel="noreferrer noopener">
           <AiOutlineMail />
         </a>
       </div>

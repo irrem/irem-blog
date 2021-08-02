@@ -11,10 +11,13 @@ function Home() {
       <Container>
         <Row>
           <Col xs="6" sm="4">
-            <div className="orange-box">
-              <img src={code} style={{ width: 300, height: 200 }} />
-              <p>You can find the codes I wrote here.</p>
-            </div>
+            {" "}
+            <a href="https://github.com/irrem/irem-blog">
+              <div className="orange-box">
+                <img src={code} style={{ width: 300, height: 200 }} />
+                <p>You can find the codes I wrote here.</p>
+              </div>
+            </a>
           </Col>
           <Col xs="6" sm="4">
             <div className="yellow-box">
