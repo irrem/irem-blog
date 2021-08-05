@@ -1,0 +1,83 @@
+.centerItems{
+  margin: 50px;
+  padding: 50px;
+  place-items: center;
+  align-items: center;
+
+}
+.inputs {
+  margin-left: 50px;
+  width: 200px;
+  height: 50px;
+  margin-top: 20px;
+  text-align: center;
+  display: inline-block;
+  border: none;
+  border-radius: 10px;border-color: rgb(250, 240, 98); 
+  border-style: solid;
+}
+.label{
+  padding: 10px;
+  margin-right: 10px;
+  background-color: dodgerblue;
+  color: white;
+  border: none;
+  border-radius: 10px;
+}
+.inputTexts {
+  margin-top: 20px;
+  width: 400px;
+  height: 200px;
+  border-color: rgb(250, 240, 98); 
+  border-style: solid;
+  border-radius: 10px;
+  text-align: center;
+}
+.button {
+  width: 200px;
+  height: 50px;
+  background-color: dodgerblue;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.button :hover{
+  width: 200px;
+  height: 50px;
+  background-color: rgb(42, 146, 250);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  padding-right: 10px;
+  
+}
+.itemListDesign{
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  width: 800px;
+  height: 150px;
+  border-color:rgb(205, 227, 248); 
+background-color:rgb(205, 227, 248); 
+  border-radius: 10px;
+  display: block;
+  
+}
+.smallImg{
+  width: 150px;
+  height:130px;
+  margin:10px;
+  border-radius: 10px;
+  display: inline;
+}
+.articleText{
+  width: 600px;
+  height:130px;
+  margin:10px;
+  float: right;
+  
+}
+

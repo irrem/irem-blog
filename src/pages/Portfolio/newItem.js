@@ -7,44 +7,127 @@ import {
   Input,
   Button,
 } from "reactstrap";
-function newItem() {
+
+import React, { useState } from "react";
+
+import firebase from "firebase";
+import firebaseConfig from "../../constants/firebase";
+
+import "./styleItem.css";
+
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+}
+var db = firebase.firestore();
+
+const NewItem = () => {
+  const [category, setCategory] = useState("");
+  const [title, setTitle] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
+  const [text, setText] = useState("");
+  var date = new Date().toLocaleDateString();
+
+  const AddItem = () => {
+    console.log(category, title, imageUrl, text);
+    db.collection("Articles")
+      .add({
+        category,
+        title,
+        imageUrl,
+        text,
+      })
+      .then((docRef) => {
+        console.log("Document written with ID: ", docRef.id);
+
+        alert("Kayıt işlemi başarıyla tamamlandı!");
+      })
+      .catch((error) => {
+        console.error("Error adding document: ", error);
+      });
+  };
+  function clearInputValue() {
+    setCategory("");
+    setTitle("");
+    setImageUrl("");
+  }
   return (
-    <div className=".center-col-p">
-      
-        <h4>Add new text</h4>
-        <br />
-        <Form
-          className="form"
-          style={{ alignItems: "center", position: "relative" }}
-        >
-          <Col md="4">
+    <div className="center-items" style={{ marginLeft: 200, marginBottom: 50 }}>
+      <br />
+
+      <Container>
+        <h2 style={{ color: "dodgerblue" }}>Add new text</h2>
+        <p className="label" style={{ float: "right", marginRight: 60 }}>
+          {" "}
+          Tarih
+          {new Date().toLocaleDateString()}
+        </p>
+        <p className="label" style={{ float: "right", marginRight: 60 }}>
+          {" "}
+          Saat {new Date().toLocaleTimeString()}
+        </p>
+        <Form className="form">
+          <Col className="center-items">
             <FormGroup>
-              <Label>Title</Label>
-              <Input type="text" name="title" id="title" />
+              <Label className="label">Category</Label>
+              <Input
+                className="inputs"
+                type="text"
+                name="title"
+                id="category"
+                onChange={(text) => setCategory(text.target.value)}
+                value={category}
+              />
             </FormGroup>
             <FormGroup>
-              <Label>Image Url</Label>
-              <Input type="text" name="imageUrl" id="imageUrl" />
+              <Label className="label">Title</Label>
+              <Input
+                className="inputs"
+                type="text"
+                name="title"
+                id="title"
+                onChange={(text) => setTitle(text.target.value)}
+                value={title}
+              />
             </FormGroup>
             <FormGroup>
-              <Label>Text</Label>
-              <Input type="text" name="text" id="text" />
+              <Label className="label">Image Url</Label>
+              <Input
+                className="inputs"
+                type="text"
+                name="imageUrl"
+                id="imageUrl"
+                onChange={(text) => setImageUrl(text.target.value)}
+                value={imageUrl}
+              />
+            </FormGroup>
+            <FormGroup>
+              <Label className="label">Text</Label>
+              <Input
+                className="inputTexts"
+                type="text"
+                name="text"
+                id="text"
+                onChange={(text) => setText(text.target.value)}
+                value={text}
+              />
             </FormGroup>
             <Button
+              onClick={() => AddItem()}
+              className="button"
               style={{
-                alignItems: "center",
-                marginLeft: 20,
-                position: "relative",
-                width: 300,
-                backgroundColor: " #D61471",
-                border: "none",
+                marginTop: 30,
+                marginLeft: 55,
+                width: 250,
+                height: 50,
+                font: 20,
               }}
             >
               Kaydet
             </Button>
           </Col>
         </Form>
+      </Container>
     </div>
   );
-}
-export default newItem;
+};
+export default NewItem;
