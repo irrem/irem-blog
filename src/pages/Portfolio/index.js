@@ -12,6 +12,13 @@ var db = firebase.firestore();
 
 function Portfolio() {
   const [items, setItems] = useState([]);
+  const [id,setId]=useState();
+  const [nullable,setNullable]=useState();
+  function getDetail(id){
+    setId({id});
+    console.log(id);
+   // window.location.href = "./itemDetail";
+  }
   function GetData() {
     var List = [];
     db.collection("Articles")
@@ -25,6 +32,7 @@ function Portfolio() {
             imageUrl: doc.data().imageUrl,
           });
           setItems(List);
+          setNullable(Math.floor(Math.random() * 999));
           console.log(items);
         });
       });
@@ -32,7 +40,7 @@ function Portfolio() {
 
   useEffect(() => {
     GetData();
-  });
+  },[]);
 
   return (
     <div className="centerItems">
@@ -47,7 +55,7 @@ function Portfolio() {
                     {item.text}
                     <Button
                       className="button"
-                      onClick={() => (window.location.href = "./itemDetail")}
+                      onClick={() => getDetail(item.id)}
                       style={{
                         float: "right",
                         marginTop: 20,
