@@ -7,9 +7,11 @@
 }
 .inputs {
   margin-left: 50px;
-  width: 200px;
+  width: 300px;
   height: 50px;
   margin-top: 20px;
+  min-width: 300px;
+  max-width: 300px;
   text-align: center;
   display: inline-block;
   border: none;
@@ -26,12 +28,14 @@
 }
 .inputTexts {
   margin-top: 20px;
-  width: 400px;
-  height: 200px;
+  min-width: 300px;
+  max-width: 300px;
+  height:50px;
   border-color: rgb(250, 240, 98); 
   border-style: solid;
   border-radius: 10px;
   text-align: center;
+
 }
 .button {
   width: 200px;
@@ -79,5 +83,11 @@ background-color:rgb(205, 227, 248);
   margin:10px;
   float: right;
   
+}
+.comment{
+  margin-left: auto;
+  margin-right: auto;
+ padding: 20px;
+  width: 600px;
 }
 

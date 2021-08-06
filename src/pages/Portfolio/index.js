@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Button, Row, Container, Col } from "reactstrap";
 import imageUrl from "../../ui-elements/rct.png";
-
+import { Link, useParams } from "react-router-dom";
 import firebase from "firebase";
 import firebaseConfig from "../../constants/firebase";
 
@@ -12,13 +12,9 @@ var db = firebase.firestore();
 
 function Portfolio() {
   const [items, setItems] = useState([]);
-  const [id,setId]=useState();
+  const [articleId,setArticleId]=useState();
   const [nullable,setNullable]=useState();
-  function getDetail(id){
-    setId({id});
-    console.log(id);
-   // window.location.href = "./itemDetail";
-  }
+
   function GetData() {
     var List = [];
     db.collection("Articles")
@@ -33,7 +29,7 @@ function Portfolio() {
           });
           setItems(List);
           setNullable(Math.floor(Math.random() * 999));
-          console.log(items);
+         
         });
       });
   }
@@ -55,15 +51,17 @@ function Portfolio() {
                     {item.text}
                     <Button
                       className="button"
-                      onClick={() => getDetail(item.id)}
+                   
                       style={{
                         float: "right",
                         marginTop: 20,
                         padding: 5,
                         fontSize: 15,
                       }}
-                    >
-                      Read More
+                     
+                    ><Link   to={"/itemDetails/" + item.id}>
+                    
+                      Read More</Link>
                     </Button>
                   </div>
                 </div>

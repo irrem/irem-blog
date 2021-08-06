@@ -8,6 +8,7 @@ import Portfolio from "./pages/Portfolio";
 import Footer from "./components/Footer";
 import NewItem from "./pages/Portfolio/NewItem";
 import Login from "./pages/Auth";
+import ItemDetail from "./pages/Portfolio/ItemDetail";
 
 function App() {
   return (
@@ -17,9 +18,11 @@ function App() {
         <Switch>
           <Route path="/portfolio">
             <Portfolio />
-          </Route>
+          </Route> 
           <Route path="/about">
             <About />
+          </Route><Route path="/itemDetails/:articleId">
+            <ItemDetail />
           </Route>
           <Route path="/login">
             <Login />
