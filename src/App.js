@@ -6,9 +6,9 @@ import About from "./pages/About";
 import Home from "./pages/Home";
 import Portfolio from "./pages/Portfolio";
 import Footer from "./components/Footer";
-import NewItem from "./pages/Portfolio/NewItem";
 import Login from "./pages/Auth";
 import ItemDetail from "./pages/Portfolio/ItemDetail";
+import NewItem from "./pages/Portfolio/NewItem";
 
 function App() {
   return (
