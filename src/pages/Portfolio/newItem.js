@@ -68,6 +68,7 @@ const NewItem = () => {
        window.location.href="/login" 
       }
     });
+    
   }
 
   useEffect(() => {
