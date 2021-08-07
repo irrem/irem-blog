@@ -26,12 +26,55 @@ const ItemDetail = (props) => {
   const [imageUrl, setImageUrl] = useState("");
   const [text, setText] = useState("");
   const [date,setDate]=useState("");
+  const [username, setUsername]=useState("");
+  const [comment,setComment]=useState("");
+  const [items,setItems]= useState([]);
 
 
   const [nullable, setNullable] = useState("");
 
   let { articleId } = useParams();
   //console.log(articleId+"aydi");
+function clearInputValue(){
+  setUsername("");
+  setComment("");
+}
+  function addComment(articleId){
+    db.collection('Articles')
+    .doc(articleId)
+    .collection('comments')
+    .add({comment,username})
+    .then((docRef) => {
+      console.log("Document written with ID: ", docRef.id);
+
+      alert("Kayıt işlemi başarıyla tamamlandı!");
+      clearInputValue();
+    })
+    .catch((error) => {
+      console.error("Error adding document: ", error);
+    });;
+    
+  }
+  function GetComments(articleId){
+    var List = [];
+    db.collection("Articles")
+    .doc(articleId).collection('comments').get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          List.push({
+            id: doc.id,
+            username:doc.data().username,
+            comment:doc.data().comment
+          });
+          
+          setItems(List);
+          console.log(List);
+          setNullable(Math.floor(Math.random() * 999));
+         
+        });
+      });
+  
+  }
 
   function GetDataWithId(articleId) {
     db.collection("Articles")
@@ -53,6 +96,7 @@ const ItemDetail = (props) => {
   }
   useEffect(() => {
     GetDataWithId(articleId);
+    GetComments(articleId);
   }, []);
 
   return (
@@ -64,17 +108,33 @@ const ItemDetail = (props) => {
           <img className="imageLarge" src={imageUrl} />
           <br/>
           <p>{text}</p>
-           
+          
         </div>
+        
         <div className="comment">
-          <Form className="form">
-            <Col className="center-items">
+          <h3>Comments</h3>
+        {items.length ? (
+          items.map((item) => (
+          <div className="comments" style={{backgroundColor:"rgb(250, 240, 98)",padding:5,margin:10,paddingLeft:20}}>
+           <b> {item.username}</b>
+           <p> {item.comment}</p>
+           
+          </div>
+          ))): (
+            <h2>Yükleniyor</h2>
+          )}
+          <Form className="form"> <hr/>
+            <Col className="center-items" style={{marginLeft:100,marginBottom:50}}>
               <FormGroup>
-                <h3> Add Comment</h3>
+             
+                <h3  style={{marginLeft:50}}> Add Comment</h3>
                 <Input
                   className="inputs"
                   id="username"
                   type="text"
+                  
+                onChange={(text) => setUsername(text.target.value)}
+                value={username}
                   placeholder="You can write your name here"
                   style={{ display: "block" }}
                 ></Input>
@@ -84,11 +144,15 @@ const ItemDetail = (props) => {
                   id="comment"
                   type="text"
                   placeholder="You can write comments here"
+                  
+                onChange={(text) => setComment(text.target.value)}
+                value={comment}
                   style={{ display: "block", marginLeft: 50 }}
                 ></textarea>
                 <Button
                   className="button"
                   style={{ display: "block", marginLeft: 100, marginTop: 20 }}
+                  onClick={()=>addComment(articleId)}
                 >
                   {" "}
                   Add Comment

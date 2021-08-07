@@ -31,6 +31,19 @@ body {
   font-weight: bold;
 }
 
+.logo{
+  float: left;
+  left:0;
+  padding:12px;
+  display: inline;
+  font-size: 28px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color:rgb(13, 161, 161);
+  margin-left: 20px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
 .header li:hover {
   background-color: #ddd;
   color: black;

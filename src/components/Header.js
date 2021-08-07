@@ -1,3 +1,4 @@
+import { left } from "@popperjs/core";
 import { Link } from "react-router-dom";
 import PersonalLinks from "../constants/personalLinks";
 
@@ -6,9 +7,13 @@ function Header() {
   return (
     <nav>
       <div>
-      
         <div className="header">
+          <div className="logo">
+            Rukiye İrem Sarısoy
+          </div>
+          
           <ul>
+
             <li>
               <Link to="/">Home</Link>
             </li>

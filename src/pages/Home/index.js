@@ -15,21 +15,25 @@ function Home() {
             <a href="https://github.com/irrem/irem-blog">
               <div className="orange-box">
                 <img src={code} style={{ width: 300, height: 200 }} />
-                <p>You can find the codes I wrote here.</p>
+                <p>This site's soruce code here.</p>
               </div>
             </a>
           </Col>
-          <Col xs="6" sm="4">
+          <Col xs="6" sm="4"><a href="https://bionluk.com/portfolyo/iremsarisoy">
             <div className="yellow-box">
               <img src={graphics} style={{ width: 300, height: 200 }} />
               <p> You can review my arts.</p>
-            </div>
+            </div></a>
           </Col>
           <Col sm="4">
-            <div className="blue-box">
-              <img src={article} style={{ width: 300, height: 200 }} />
-              <p> You can read my articles.</p>
-            </div>
+            {" "}
+            <a href="/portfolio">
+              <div className="blue-box">
+                <img src={article} style={{ width: 300, height: 200 }} />
+
+                <p> You can read my articles.</p>
+              </div>
+            </a>
           </Col>
         </Row>
       </Container>

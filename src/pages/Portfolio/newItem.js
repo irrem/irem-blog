@@ -7,8 +7,9 @@ import {
   Input,
   Button,
 } from "reactstrap";
+import "firebase/auth";
 
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 
 import firebase from "firebase";
 import firebaseConfig from "../../constants/firebase";
@@ -20,6 +21,7 @@ if (!firebase.apps.length) {
 }
 var db = firebase.firestore();
 
+
 const NewItem = () => {
   const [category, setCategory] = useState("");
   const [title, setTitle] = useState("");
@@ -30,6 +32,9 @@ const NewItem = () => {
   var time =  new Date().toLocaleTimeString();
 
   const AddItem = () => {
+
+    
+
     console.log(category, title, imageUrl, text);
     db.collection("Articles")
       .add({
@@ -45,6 +50,7 @@ const NewItem = () => {
         console.log("Document written with ID: ", docRef.id);
 
         alert("Kayıt işlemi başarıyla tamamlandı!");
+        clearInputValue();
       })
       .catch((error) => {
         console.error("Error adding document: ", error);
@@ -56,6 +62,17 @@ const NewItem = () => {
     setImageUrl("");
     setTextSmall("");
   }
+  function userControl(){
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (!user) {
+       window.location.href="/login" 
+      }
+    });
+  }
+
+  useEffect(() => {
+  userControl();
+  });
   return (
     <div className="center-items" style={{ marginLeft: 200, marginBottom: 50 }}>
       <br />
