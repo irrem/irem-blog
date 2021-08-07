@@ -26,7 +26,12 @@ function Portfolio() {
             title: doc.data().title,
             text: doc.data().text,
             imageUrl: doc.data().imageUrl,
+            date:doc.data().date,
+            time:doc.data().time,
+            textSmall:doc.data().textSmall,
+            category:doc.data().category
           });
+          
           setItems(List);
           setNullable(Math.floor(Math.random() * 999));
          
@@ -43,12 +48,15 @@ function Portfolio() {
       <Container>
         {items.length ? (
           items.map((item) => (
+           
             <Row>
               <Col>
                 <div className="itemListDesign">
+                
                   <img className="smallImg" src={item.imageUrl} />
                   <div className="articleText">
-                    {item.text}
+                 <h5>{item.title}</h5> 
+                   <p>{item.textSmall}</p> 
                     <Button
                       className="button"
                    
@@ -59,7 +67,7 @@ function Portfolio() {
                         fontSize: 15,
                       }}
                      
-                    ><Link   to={"/itemDetails/" + item.id}>
+                    ><Link   to={"/itemDetails/" + item.id} style={{textDecoration:"none",color:"white"}}>
                     
                       Read More</Link>
                     </Button>

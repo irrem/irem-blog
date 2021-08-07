@@ -25,7 +25,9 @@ const NewItem = () => {
   const [title, setTitle] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [text, setText] = useState("");
+  const [textSmall, setTextSmall] = useState("");
   var date = new Date().toLocaleDateString();
+  var time =  new Date().toLocaleTimeString();
 
   const AddItem = () => {
     console.log(category, title, imageUrl, text);
@@ -35,6 +37,9 @@ const NewItem = () => {
         title,
         imageUrl,
         text,
+        date,
+        textSmall,
+        time
       })
       .then((docRef) => {
         console.log("Document written with ID: ", docRef.id);
@@ -49,6 +54,7 @@ const NewItem = () => {
     setCategory("");
     setTitle("");
     setImageUrl("");
+    setTextSmall("");
   }
   return (
     <div className="center-items" style={{ marginLeft: 200, marginBottom: 50 }}>
@@ -59,56 +65,69 @@ const NewItem = () => {
         <p className="label" style={{ float: "right", marginRight: 60 }}>
           {" "}
           Tarih
-          {new Date().toLocaleDateString()}
-        </p>
+          {date}</p>
         <p className="label" style={{ float: "right", marginRight: 60 }}>
           {" "}
-          Saat {new Date().toLocaleTimeString()}
+          Saat {time}
         </p>
+        <div>
         <Form className="form">
           <Col className="center-items">
             <FormGroup>
-              <Label className="label">Category</Label>
               <Input
-                className="inputs"
+                className="input"
                 type="text"
                 name="title"
                 id="category"
                 onChange={(text) => setCategory(text.target.value)}
                 value={category}
+                placeholder="Category"
               />
             </FormGroup>
             <FormGroup>
-              <Label className="label">Title</Label>
               <Input
-                className="inputs"
+                className="input"
                 type="text"
                 name="title"
                 id="title"
                 onChange={(text) => setTitle(text.target.value)}
                 value={title}
+                placeholder="Title"
               />
             </FormGroup>
             <FormGroup>
-              <Label className="label">Image Url</Label>
+              
               <Input
-                className="inputs"
+                className="input"
                 type="text"
                 name="imageUrl"
                 id="imageUrl"
                 onChange={(text) => setImageUrl(text.target.value)}
                 value={imageUrl}
+                placeholder="Image Url"
               />
             </FormGroup>
             <FormGroup>
-              <Label className="label">Text</Label>
-              <Input
-                className="inputTexts"
+              <textarea
+                className="textInp"
+                type="text"
+                name="text"
+                id="text"
+                onChange={(text) => setTextSmall(text.target.value)}
+                value={textSmall}
+                placeholder="Text Fragment"
+                style={{maxHeight:120,minHeight:70}}
+              />
+            </FormGroup>
+            <FormGroup>
+              <textarea
+                className="textInp"
                 type="text"
                 name="text"
                 id="text"
                 onChange={(text) => setText(text.target.value)}
                 value={text}
+                placeholder="Text"
               />
             </FormGroup>
             <Button
@@ -116,16 +135,17 @@ const NewItem = () => {
               className="button"
               style={{
                 marginTop: 30,
-                marginLeft: 55,
+                marginLeft: 150,
+                marginBottom:30,
                 width: 250,
                 height: 50,
-                font: 20,
+                fontSize: 15,
               }}
             >
               Kaydet
             </Button>
           </Col>
-        </Form>
+        </Form></div>
       </Container>
     </div>
   );

@@ -13,6 +13,7 @@ import {
 import "./styleItem.css";
 import firebase from "firebase";
 import firebaseConfig from "../../constants/firebase";
+import { right } from "@popperjs/core";
 
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
@@ -24,8 +25,9 @@ const ItemDetail = (props) => {
   const [title, setTitle] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [text, setText] = useState("");
+  const [date,setDate]=useState("");
 
-  var date = new Date().toLocaleDateString();
+
   const [nullable, setNullable] = useState("");
 
   let { articleId } = useParams();
@@ -43,6 +45,7 @@ const ItemDetail = (props) => {
           setTitle(querySnapshot.data().title);
             setText(querySnapshot.data().text);
             setImageUrl(querySnapshot.data().imageUrl);
+            setDate(querySnapshot.data().date);
         });
         setNullable(Math.floor(Math.random() * 999));
         console.log(title);
@@ -53,17 +56,21 @@ const ItemDetail = (props) => {
   }, []);
 
   return (
-    <div className="center-items" style={{ marginLeft: 200, marginBottom: 50 }}>
+    <div className="center-items" >
       <Container>
         <div className="oneArticle">
-            {articleId}
-            {text}
+          <h3>{title}</h3>          
+          <p style={{float:right,margin:10}}>{date}</p>
+          <img className="imageLarge" src={imageUrl} />
+          <br/>
+          <p>{text}</p>
+           
         </div>
         <div className="comment">
           <Form className="form">
             <Col className="center-items">
               <FormGroup>
-                <Label> Add Comment</Label>
+                <h3> Add Comment</h3>
                 <Input
                   className="inputs"
                   id="username"
