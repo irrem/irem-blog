@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Button, Row, Container, Col } from "reactstrap";
-import imageUrl from "../../ui-elements/rct.png";
-import { Link, useParams } from "react-router-dom";
+import { Link} from "react-router-dom";
 import firebase from "firebase";
 import firebaseConfig from "../../constants/firebase";
 
@@ -12,7 +11,6 @@ var db = firebase.firestore();
 
 function Portfolio() {
   const [items, setItems] = useState([]);
-  const [articleId,setArticleId]=useState();
   const [nullable,setNullable]=useState();
 
   function GetData() {

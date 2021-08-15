@@ -7,8 +7,8 @@ import Home from "./pages/Home";
 import Portfolio from "./pages/Portfolio";
 import Footer from "./components/Footer";
 import Login from "./pages/Auth";
-import {NewItem} from "./pages/Portfolio";
-import {ItemDetail} from "./pages/Portfolio";
+import NewItem from "./pages/Portfolio/NewItem";
+import ItemDetail from "./pages/Portfolio/ItemDetail";
 
 function App() {
   return (
