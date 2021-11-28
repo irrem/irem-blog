@@ -3,6 +3,8 @@ import { Button, Row, Container, Col } from "reactstrap";
 import { Link} from "react-router-dom";
 import firebase from "firebase";
 import firebaseConfig from "../../constants/firebase";
+import art from "../../ui-elements/Learning-pana.png";
+
 
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
@@ -44,6 +46,7 @@ function Portfolio() {
   return (
     <div className="centerItems">
       <Container>
+      <img src={art} style={{ width: 300, height: 300 ,marginLeft:525,borderRadius:200}} />
         {items.length ? (
           items.map((item) => (
            
@@ -71,12 +74,15 @@ function Portfolio() {
                     </Button>
                   </div>
                 </div>
+                
               </Col>
             </Row>
           ))
         ) : (
           <h2>Yükleniyor</h2>
+
         )}
+        
       </Container>
     </div>
   );

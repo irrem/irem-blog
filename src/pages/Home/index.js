@@ -4,14 +4,14 @@ import { Row, Col, Container } from "reactstrap";
 import code from "./../../ui-elements/img-code.png";
 import graphics from "./../../ui-elements/graphic.jpg";
 import article from "./../../ui-elements/article-writ.jpg";
+import art from "./../../ui-elements/Learning-pana.png";
 
 function Home() {
   return (
     <div className="home-main-col">
       <Container>
         <Row>
-          <Col xs="6" sm="4">
-            {" "}
+          <Col md="3">
             <a href="https://github.com/irrem/irem-blog">
               <div className="orange-box">
                 <img src={code} style={{ width: 300, height: 200 }} />
@@ -19,13 +19,13 @@ function Home() {
               </div>
             </a>
           </Col>
-          <Col xs="6" sm="4"><a href="https://bionluk.com/portfolyo/iremsarisoy">
+          <Col md="3"><a href="https://bionluk.com/portfolyo/iremsarisoy">
             <div className="yellow-box">
               <img src={graphics} style={{ width: 300, height: 200 }} />
               <p> You can review my arts.</p>
             </div></a>
           </Col>
-          <Col sm="4">
+          <Col md="3">
             {" "}
             <a href="/portfolio">
               <div className="blue-box">
@@ -36,6 +36,8 @@ function Home() {
             </a>
           </Col>
         </Row>
+        
+        
       </Container>
     </div>
   );
